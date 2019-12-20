@@ -1,0 +1,183 @@
+<view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);width:{{sliderWidth}}px"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                <view class="prompt" wx:if="{{orderInfo.length == 0}}">
+                  <image src="../../image/dd.png"/>
+                  <text>您没有任何订单</text>
+                </view>
+                    <scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{orderInfo.length == 0?false:true}}">
+                          <view class="ws-address" wx:for="{{orderInfo}}" wx:for-item="item">
+                              <view class="ws-info">
+                                  <view class="ws-name">小蚂蚁餐厅{{item.way=='take-out'?'':'-'+item.mark+'号'}}</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==0)?true:false}}">订单未支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==1)?true:false}}">订单已支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==2)?true:false}}">订单已取消</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==3)?true:false}}">已申请退款</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==4)?true:false}}">退款已完成</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==5)?true:false}}">订单已完成</view>
+                              </view>
+                              <view class="ws-site">
+                              <view class="goods" wx:for="{{item.list}}" wx:for-item="goods">
+                                <image src="{{webUrl}}{{goods.pic}}"></image>{{goods.name}}x{{goods.count}}
+                                <view >￥{{goods.price*goods.count}}</view>
+                              </view>
+                              <view class="bill">{{item.way=='take-out'?'外卖配送':'到店消费'}}，共{{item.cont}}件商品，总金额￥{{item.goodsMoney}}</view>
+                              </view>
+                              <view class="ws-action" wx:if="{{(item.order_status==2||item.order_status==3||item.order_status==4)?false:true}}">
+                                
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="{{(item.order_status==1||item.order_status==5)?'goVanish':'goRefund'}}" >{{(item.order_status==1||item.order_status==5)?'申请退款':'取消订单'}}</view>
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="achieve" wx:if="{{(item.order_status==1)?true:false}}">确认完成</view>
+                                <view class="ws-delete" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="goPay" wx:if="{{(item.order_status==0)?true:false}}">去支付</view>
+                                
+                              </view>
+                          </view>
+                    </scroll-view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                <view class="prompt" wx:if="{{treatOrderInfo.length == 0}}">
+                  <image src="../../image/dd.png"/>
+                  <text>您没有任何订单</text>
+                </view>
+                  <scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{treatOrderInfo.length == 0?false:true}}">
+                           <view class="ws-address" wx:for="{{treatOrderInfo}}" wx:for-item="item">
+                              <view class="ws-info">
+                                  <view class="ws-name">小蚂蚁餐厅{{item.way=='take-out'?'':'-'+item.mark+'号'}}</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==0)?true:false}}">订单未支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==1)?true:false}}">订单已支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==2)?true:false}}">订单已取消</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==3)?true:false}}">已申请退款</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==4)?true:false}}">退款已完成</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==5)?true:false}}">订单已完成</view>
+                              </view>
+                              <view class="ws-site">
+                              <view class="goods" wx:for="{{item.list}}" wx:for-item="goods">
+                                <image src="{{webUrl}}{{goods.pic}}"></image>{{goods.name}}x{{goods.count}}
+                                <view >￥{{goods.price*goods.count}}</view>
+                              </view>
+                              <view class="bill">{{item.way=='take-out'?'外卖配送':'到店消费'}}，共{{item.cont}}件商品，总金额￥{{item.goodsMoney}}</view>
+                              </view>
+                              <view class="ws-action" wx:if="{{(item.order_status==2||item.order_status==3||item.order_status==4||item.order_status==5)?false:true}}">
+                                
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="{{(item.order_status==1||item.order_status==5)?'goVanish':'goRefund'}}" >{{(item.order_status==1||item.order_status==5)?'申请退款':'取消订单'}}</view>
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="achieve" wx:if="{{(item.order_status==1)?true:false}}">确认完成</view>
+                                <view class="ws-delete" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="goPay" wx:if="{{(item.order_status==0)?true:false}}">去支付</view>
+                                
+                              </view>
+                          </view>
+                  </scroll-view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                  <view class="prompt" wx:if="{{alreadyOrderInfo.length == 0}}">
+                  <image src="../../image/dd.png"/>
+                  <text>您没有任何订单</text>
+                </view>
+                  <scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{alreadyOrderInfo.length == 0?false:true}}">
+                          <view class="ws-address" wx:for="{{alreadyOrderInfo}}" wx:for-item="item">
+                              <view class="ws-info">
+                                  <view class="ws-name">小蚂蚁餐厅{{item.way=='take-out'?'':'-'+item.mark+'号'}}</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==0)?true:false}}">订单未支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==1)?true:false}}">订单已支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==2)?true:false}}">订单已取消</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==3)?true:false}}">已申请退款</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==4)?true:false}}">退款已完成</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==5)?true:false}}">订单已完成</view>
+                              </view>
+                              <view class="ws-site">
+                              <view class="goods" wx:for="{{item.list}}" wx:for-item="goods">
+                                <image src="{{webUrl}}{{goods.pic}}"></image>{{goods.name}}x{{goods.count}}
+                                <view >￥{{goods.price*goods.count}}</view>
+                              </view>
+                              <view class="bill">{{item.way=='take-out'?'外卖配送':'到店消费'}}，共{{item.cont}}件商品，总金额￥{{item.goodsMoney}}</view>
+                              </view>
+                              <view class="ws-action" wx:if="{{(item.order_status==2||item.order_status==3||item.order_status==4||item.order_status==5)?false:true}}">
+                                
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="{{(item.order_status==1||item.order_status==5)?'goVanish':'goRefund'}}" >{{(item.order_status==1||item.order_status==5)?'申请退款':'取消订单'}}</view>
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="achieve" wx:if="{{(item.order_status==1)?true:false}}">确认完成</view>
+                                <view class="ws-delete" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="goPay" wx:if="{{(item.order_status==0)?true:false}}">去支付</view>
+                                
+                              </view>
+                          </view>
+                  </scroll-view>
+                </view>
+                 <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+                  <view class="prompt" wx:if="{{achieveOrderInfo.length == 0}}">
+                    <image src="../../image/dd.png"/>
+                    <text>您没有任何订单</text>
+                  </view>
+                  <scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{achieveOrderInfo.length == 0?false:true}}">
+                           <view class="ws-address" wx:for="{{achieveOrderInfo}}" wx:for-item="item">
+                              <view class="ws-info">
+                                  <view class="ws-name">小蚂蚁餐厅{{item.way=='take-out'?'':'-'+item.mark+'号'}}</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==0)?true:false}}">订单未支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==1)?true:false}}">订单已支付</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==2)?true:false}}">订单已取消</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==3)?true:false}}">已申请退款</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==4)?true:false}}">退款已完成</view>
+                                  <view class="ws-tel" wx:if="{{(item.order_status==5)?true:false}}">订单已完成</view>
+                              </view>
+                              <view class="ws-site">
+                              <view class="goods" wx:for="{{item.list}}" wx:for-item="goods">
+                                <image src="{{webUrl}}{{goods.pic}}"></image>{{goods.name}}x{{goods.count}}
+                                <view >￥{{goods.price*goods.count}}</view>
+                              </view>
+                              <view class="bill">{{item.way=='take-out'?'外卖配送':'到店消费'}}，共{{item.cont}}件商品，总金额￥{{item.goodsMoney}}</view>
+                              </view>
+                              <view class="ws-action" wx:if="{{(item.order_status==2||item.order_status==3||item.order_status==4)?false:true}}">
+                                
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="{{(item.order_status==1||item.order_status==5)?'goVanish':'goRefund'}}" >{{(item.order_status==1||item.order_status==5)?'申请退款':'取消订单'}}</view>
+                                <view class="ws-vanish" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="achieve" wx:if="{{(item.order_status==1)?true:false}}">确认完成</view>
+                                <view class="ws-delete" data-crsNo="{{item.order_sn}}"  data-gM="{{item.goodsMoney}}" bindtap="goPay" wx:if="{{(item.order_status==0)?true:false}}">去支付</view>
+                                
+                              </view>
+                          </view>
+                  </scroll-view>
+                </view>
+            </view>
+        </view>
+</view>
+<!--<view class="swiper">
+      <block wx:for="{{orderList}}" wx:key="index">
+            <template is="myorder" data="{{item}}"/>
+      </block>
+      <view class="prompt" wx:if="{{orderList.length == 0}}">
+            <image src="../../image/dd.png"/>
+            <text>您没有任何订单</text>
+      </view>
+  </view>
+
+<template name="myorder">
+    <view class="item">
+        <view class="ddhead">
+              <text class="ddhao">订单号：{{item.order_sn}}</text>
+              <text class="state">
+                    <block wx:if="{{item.status == '0'}}"> 未支付 </block>
+                    <block wx:elif="{{item.status == '1'}}"> 已支付 </block>
+                    <block wx:else > 已取消 </block>
+              </text>
+        </view>
+        <block wx:for="{{item.goods}}" wx:key="index">
+            <view class="ddimg">
+                <image src="{{item.thumb}}"/>
+            </view>
+        </block>
+        <view class="ddfooter">
+            <text class="jr">订单金额：</text>
+            <text class="jr">￥{{item.goodsMoney}}</text>
+            <view wx:if = "{{item.status == 0}}">
+                    <view class="btn" id="{{item.id}}" bindtap="pay">去支付</view>
+            </view> 
+            <view wx:if = "{{item.status == 0}}">
+                    <view class="btn cancel" id="{{item.id}}" bindtap="cancelOrder">取消订单</view>
+            </view>
+        </view>
+     </view>
+</template>-->

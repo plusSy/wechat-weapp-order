@@ -1,0 +1,80 @@
+/**index.wxss**/
+page{
+  background-color: #EEE;
+}
+.list {
+  background: #fff;
+  overflow: hidden;
+  border-top:1px solid #eee;
+}
+.list .item{
+  padding:8px 0px;
+  font-size: 14px;
+  color:#333;
+  position: relative;
+  border-bottom: 1px solid #f3f3f3;
+}
+.list .item label{
+  float: left;
+  line-height: 26px;
+  width:20%;
+  padding-right: 10px;
+  color:#333;
+  padding-left:10px;
+  height: 26px;
+}
+.weui-cell__bd{
+  float: left;
+  line-height: 26px;
+  width:70%;
+  color:#333;
+  height: 26px;
+}
+picker{
+  margin-top: -8px;
+}
+.list .item input {
+  float: left;
+  width: 70%;
+  color:#666;
+}
+.list .item textarea {
+  float: left;
+  width: 100%;
+  height: 60px;
+  padding-top:5px;
+  padding-left:10px;
+}
+.list .item:after{
+  content:"";
+  display: block;
+  clear: both;
+}
+.list .item .btn {
+  background: #ff533b;
+  padding:3px 30px;
+  display: inline-block;
+  font-size: 12px;
+  color:#fff;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.list .bt {
+  text-align: center;
+
+}
+checkbox{
+  border-radius: 50%;
+}
+.list .item .checkbox{
+  width:100%;
+  float:left;
+}
+.list .item switch{
+  float:right;
+  margin-right:15px;
+
+}
+.list .default{
+  display: none;
+}

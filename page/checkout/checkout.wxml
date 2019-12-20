@@ -1,0 +1,101 @@
+<form bindsubmit="formSubmit" data-way="{{way}}" data-id="{{coupon!=false?coupon.id:''}}">
+<view class="base-style checkout">
+<view class="{{showView?'bright789_view_show':'bright789_view_hide'}}" >
+
+  <view class="address" wx:if="{{(way=='take-out'&&address!='')?true:false}}"bindtap="chooseAddress">
+    <view class="user">
+       <view class="user-name">收货人：{{address.username}}</view>
+       <view class="user-tel">{{address.mobile}}</view>
+       <view class="clear"></view>
+    </view>
+    <view class="location">送至：{{address.address}}</view>
+  </view>
+  <view class="address" wx:if="{{(way=='take-out'&&address=='')?true:false}}" bindtap="addAddress">
+    <view class="addAddress">请添加地址</view>
+  </view>
+
+  <!--<view class="shipment module">
+    <view class="row" wx:for="{{shipment.type}}" wx:if="{{item.selected}}">
+			配送方式
+			<view bindtap="changeShipment" class="sub-info">{{item.text}}</view>
+		</view>
+    <view class="row" wx:for="{{shipment.time}}" wx:if="{{item.selected}}">
+      配送时间
+      <view bindtap="changeTime" class="sub-info">{{item.text}}</view>
+    </view>
+  </view>-->
+</view>
+  <!--<view class="dingcan module">
+    <view class="row">
+      订餐方式（外卖配送/预约到店）
+    </view>
+  <view class="button-sp-area">
+   
+            <view class="chose-txt {{(actives == 'true')?'ws-active':''}}"  bindtap="choseTxtColor" >  
+                <text class="chose-p" >外卖配送</text>
+            </view> 
+             <view class="chose-txt {{(actives != 'true')?'ws-active':''}}"  bindtap="changeTxtColor" >  
+                <text class="chose-p" >到店消费</text>
+            </view> 
+  </view>  
+ 
+  </view>-->
+  <view class="payment module">
+    <view bindtap="changePayment" data-payment-index="{{index}}" class="row" wx:for="{{payment}}">
+      <icon class="icon {{item.iconClass}}" /> {{item.text}}
+      <icon class="icon checkbox {{item.selected ? 'checked' : ''}}" />
+    </view>
+  </view>
+
+
+  <view class="remarks module" wx:if="{{(way!='take-out')?true:false}}"> 
+    <view class="row">
+      填写台号
+      <input  placeholder="请填写台号" name="mark" value="" />
+    </view>
+  </view>
+  <view class="orderinfo module">
+    <!--<view class="row">订单价格</view>
+    <view class="cont">
+      <view class="sub-row" wx:for="{{orderInfo.list}}">
+        {{item.name}}
+        <view>{{item.price}}</view>
+      </view>
+    </view>-->
+    <view class="row total">订单金额
+      <view>{{goodsMoney}}</view>
+    </view>
+  </view>
+
+  <view class="products module">
+    <view class="row">商品清单</view>
+    <view class="cont">
+      <view class="sub-row" wx:for="{{goodsData}}" wx:for-item="item">
+        {{item.name}} * {{item.count}}
+        <view>{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+
+<view class="products module" style="color:red">
+    <view class="row">购物券优惠</view>
+    <view class="cont">
+      <view class="sub-row" wx:if="{{coupon!=false?true:false}}">
+        购物券类型:满{{coupon.yideo}}减{{coupon.xideo}}
+        <view>抵消:{{coupon.xideo}}元</view>
+      </view>
+      <view class="sub-row" wx:if="{{coupon==false?true:false}}">
+        您还没有优惠券
+      </view>
+    </view>
+  </view>
+
+
+  <view class="toolbar">
+    合计
+    <view class="strong">
+      <view class="sup">¥</view>{{coupon!=false?practical:goodsMoney}}</view>
+    <button formType="submit"   class="button">提交订单</button>
+  </view>
+</view>
+</form>

@@ -1,0 +1,26 @@
+<!-- 可用组件：https://mp.weixin.qq.com/debug/wxadoc/dev/component/ -->
+<import src="../template/template" />
+<view class="detail">
+  <!--carousel-->
+  <template is="carousel" data="{{ imgUrls }}"></template>
+  <!--restaurant-wait-info-->
+  <!--restaurant-info-->
+  <view class="restaurant-info">
+    <view class="top">
+      <image src="{{ img }}"></image>
+      <view class="top-center">
+        <text class="top-center-name">{{ name }}</text>
+        <text class="restaurant-grade five-star iconfont icon-wuxing"></text>
+      </view>
+      <!--<view class="distance">距离{{ restaurant.distance }}m</view>-->
+    </view>
+    <view class="r-i-address iconfont icon-icglobaltitlebar48iconfontmap">{{address }}</view>
+    <view bindtap="callPhone" class="r-i-tel iconfont icon-dianhua triangle">{{ tel }}</view>
+    <view class="r-i-time iconfont icon-shijian">营业时间：{{ time }}</view>
+    <view class="r-i-address iconfont icon-xiaoxi">详细介绍：
+    <text>
+    {{ jieshao }}
+    </text>
+    </view>
+  </view>
+</view>

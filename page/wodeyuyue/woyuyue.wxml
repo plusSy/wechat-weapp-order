@@ -1,0 +1,21 @@
+<view class="list">
+<view class="prompt" wx:if="{{yuyuelist.length == 0}}">
+        <image src="../../image/dd.png"/>
+        <text>您还没有预约</text>
+</view>
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{yuyuelist.length==0?false:true}}">
+    <view class="ws-address" wx:for="{{yuyuelist}}" wx:for-item="item">
+        <view class="ws-info">
+            <view class="ws-name">预约名字:{{item.name}}</view>
+            <view class="ws-name">预约电话:{{item.mobile}}</view>
+            <view class="ws-name">到店人数:{{item.num}}</view>
+            <view class="ws-name">用餐日期:{{item.date}}</view>
+            <view class="ws-name">用餐时间:{{item.time}}</view>
+            <view class="ws-name">备注:{{item.beizhu}}</view>
+        </view>
+    </view>
+</scroll-view>
+<!--<view class="cart-tab-wrp" bindtap="subscribe">
+        <view class="cart-tab-item-btn">预约消费</view>
+</view>-->
+</view>

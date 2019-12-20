@@ -1,0 +1,28 @@
+<view class="list">
+    <form bindsubmit="formSubmit">
+        <view class="item">
+            <label>收货人</label>
+            <input value="" name="name" placeholder="" />
+        </view>
+        <view class="item">
+            <label>联系方式</label>
+            <input value="" type="idcard" name="tel" placeholder=""/>
+        </view>
+        <view class="item">
+            
+            <textarea value="" name="address" placeholder="详细地址"/>   
+        </view>
+        <view style="height:6px; background-color:#EEE;"></view>
+        <view class="item">
+             <label class="checkbox ">
+                  设为默认地址
+                  <switch type="checkbox" bindchange="checkboxChange"/>
+                  
+              </label>
+              
+        </view>
+        <view class="item bt">
+            <button formType="submit" class="btn">保存</button>
+        </view>
+    </form>
+</view>

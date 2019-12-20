@@ -1,0 +1,19 @@
+<view class="list">
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;">
+    <view class="ws-address"  wx:for="{{addressInfo}}" wx:for-item="item" data-id="{{item.id}}"bindtap="chooseAddress">
+        <view class="ws-info">
+            <view class="ws-name">{{item.username}}</view>
+            <view class="ws-tel">{{item.mobile}}</view>
+        </view>
+         <view class="ws-site">
+         <view>
+           {{item.address}}
+         </view>
+        </view>
+
+    </view>
+</scroll-view>
+    <view class="cart-tab-wrp" bindtap="addrss">
+        <view class="cart-tab-item-btn">管理地址</view>
+    </view>
+</view>

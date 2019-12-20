@@ -1,0 +1,39 @@
+.weui-cell{
+    border-top: 1px solid #fff;
+    padding:7px 15px;
+}
+.weui-cell::before{
+  position: static;
+  right: initial;
+}
+.weui-cells::after {
+  border-bottom:1rpx solid #e5e4e4;
+}
+.weui-grid__icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+navigator{
+  font-size: 32rpx;
+}
+.ws-nav{
+  font-size: 32rpx;
+}
+.weui-grid{
+  border-right: none;
+  border-bottom: none;
+}
+.weui-grids{
+  border-top: none;
+  border-left:none;
+}
+.ged{
+  width: 100%;
+  height: 15rpx;
+  background-color: #e5e4e4;
+}
+.ws-img{
+  display: block;
+  width: 50px;
+  height: 50px;
+}

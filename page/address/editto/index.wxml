@@ -1,0 +1,20 @@
+<view class="list">
+    <form bindsubmit="formSubmit">
+        <view class="item">
+            <label>收货人</label>
+            <input value="{{info.username}}" name="name" placeholder=""/>
+        </view>
+        <view class="item">
+            <label>联系方式</label>
+            <input value="{{info.mobile}}" type="idcard" name="tel" placeholder=""/>
+        </view>
+        <view class="item">
+            
+            <textarea value="{{info.address}}" name="address" placeholder="详细地址"/>   
+        </view>
+        
+        <view class="item bt">
+            <button formType="submit" class="btn">修改</button>
+        </view>
+    </form>
+</view>

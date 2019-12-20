@@ -1,0 +1,81 @@
+page{
+  background-color: #eee;
+}
+.parent{
+  width: 100%;
+  height: auto;
+}
+
+.coupon{
+  width: 100%;
+  height: 200rpx;
+  background-image: url(http://webjava.cn/Public/images/coupon.png);
+  background-size: cover;
+  margin-bottom:10rpx;
+}
+.price{
+  width:35%;
+  text-align:center;
+  color: white;
+  margin-left: -2%;
+  float: left;
+}
+.money{
+  font-size: 80rpx;
+  font-weight: bold;
+}
+.reduction{
+  text-align: center;
+  margin-left: 12%;
+}
+.desc{
+  width: 65%;
+  float: left;
+}
+.tit{
+  width: 90%;
+  margin-left: 10%;
+  margin-top:3%;
+}
+.ws-tit{
+  background-color: #ff9500;
+  color: white;
+  font-size: 32rpx;
+  padding: 6rpx 8rpx;
+  margin-right: 8rpx;
+}
+.ws-desc{
+  font-size: 32rpx;
+  padding: 6rpx 8rpx;
+  color: #333;
+}
+.btn{
+  width: 80px;
+  height: 30px;
+  border-radius: 15px;
+  float:right;
+  text-align:center;
+  border:1px solid #ff9500;
+  font-size:30rpx;
+  line-height:30px;
+  color:#ff9500;
+}
+.text{
+  width: 80px;
+  height: 30px;
+  border-radius: 15px;
+  float:right;
+  text-align:center;
+  border:1px solid #eee;
+  font-size:30rpx;
+  line-height:30px;
+  color:#eee;
+}
+.date{
+  font-size: 24rpx;
+  color: #666;
+  float: left;
+  margin-left:10%; 
+  height: 30px;
+  line-height: 30px;
+}

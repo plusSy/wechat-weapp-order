@@ -1,0 +1,53 @@
+<view class="list">
+    <form bindsubmit="formSubmit">
+        <view class="item">
+        <!--<view class="item">
+            <label>到店时间</label>
+            <input value="" type="idcard" name="time" required="required" placeholder="请输入到店时间"/>
+        </view>-->
+            <label>预订姓名</label>
+            <input value="" name="name" required="required" placeholder="请输入一个联系人" />
+        </view>
+        <view class="item">
+            <label>联系方式</label>
+            <input value="" type="number" required="required" name="tel" placeholder="请输入联系电话"/>
+        </view>
+ <view class="item">
+            <label>用餐人数</label>
+            <input value="" type="number" required="required" name="num" placeholder="请输入到店用餐人数"/>
+        </view>
+         <view class="item">
+                <label>用餐日期</label>
+                <view class="weui-cell__bd">
+                    <picker mode="date" value="{{date}}" start="2017-07-01" end="" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <label>用餐时间</label>
+                <view class="weui-cell__bd">
+                    <picker mode="time" value="{{time}}" start="" end="" bindchange="bindTimeChange">
+                        <view class="weui-input">{{time}}</view>
+                    </picker>
+                </view>
+            </view>
+
+        <view class="item">
+            
+            <textarea value="" name="beizhu"  placeholder="预约备注"/>   
+        </view>
+        <view style="height:6px; background-color:#EEE;"></view>
+        <!--<view class="item">
+             <label class="checkbox ">
+                  设为默认地址
+                  <switch type="checkbox" bindchange="checkboxChange"/>
+                  
+              </label>
+              
+        </view>-->
+        <view class="item bt">
+            <button formType="submit" class="btn">提交预约</button>
+        </view>
+    </form>
+</view>

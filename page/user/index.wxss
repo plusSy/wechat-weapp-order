@@ -1,0 +1,124 @@
+/**index.wxss**/
+page{
+  background: #eee;
+}
+.user-head {
+  background:#fff;
+  height:190px;
+  position: relative;
+  display:-webkit-flex;
+	display:flex;
+	width:100%;
+  justify-content:center;
+  align-content:center;
+  padding-bottom:30rpx;
+}
+.user-head .center{
+    display: flex;
+    flex-flow: column;
+    padding-top: 40px;
+}
+.user-img{
+  width:100px;
+  height: 100px;
+}
+
+.user-img image {
+  width:80px;
+  height: 80px;
+  border-radius: 50%;
+  border:10px solid #f4f5e5;
+}
+.user-text{
+  text-align:center;
+  width:100%;
+}
+.user-text text{
+  font-family: 微软雅黑;
+  color:#333;
+  display: block;
+  font-size: 40rpx;
+  margin-top: 10rpx;
+}
+
+
+.list {
+  background: #fff;
+  margin-top:12rpx;
+}
+.list .item{
+  padding:13px 15px;
+  font-size: 14px;
+  color:#333;
+  position: relative;
+  border-bottom: 1px solid #f3f3f3;
+}
+.list .item::last-child{
+  border:none;
+}
+.list .item image {
+  width:16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align:middle;
+  margin-right:5px;
+}
+.list .blank{
+  height:12rpx;
+  background: #eee;
+  padding: 0;
+  border: none;
+}
+.list .item .jump{
+  position: absolute;
+  right:20px;
+  color:#999;
+}
+.order-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 10rpx 0;
+}
+
+.order {
+	width: 33.3%;
+	text-align: center;
+}
+
+.order image {
+	width: 90rpx;
+	height: 90rpx;
+}
+
+.order text{
+	display: block;
+	font-size: 30rpx;
+	color: #333;
+}
+contact-button{
+  width: 100%;
+  height: 100%;
+  display: block;
+  line-height: 15px;
+}
+contact-button image{
+  position:absolute;
+  left:15px;
+  top:16px;
+}
+contact-button .ws-tit{
+  position:absolute;
+  top:16px;
+  margin-left:4px;
+}
+contact-button .jump{
+  top:16px;
+}
+button{
+  border: 0px solid #fff;
+  background: #fff;
+  text-align: left;
+}

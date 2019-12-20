@@ -1,0 +1,41 @@
+<view class="list">
+    <view class="prompt" wx:if="{{addressInfo.length == 0}}">
+        <image src="../../image/dd.png"/>
+        <text>您还没有添加地址</text>
+    </view>
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;" wx:if="{{addressInfo.length==0?false:true}}">
+    <view class="ws-address" wx:for="{{addressInfo}}" wx:for-item="item">
+        <view class="ws-info">
+            <view class="ws-name">{{item.username}}</view>
+            <view class="ws-tel">{{item.mobile}}</view>
+        </view>
+         <view class="ws-site">
+         <view>
+           {{item.address}}
+         </view>
+        </view>
+        <view class="ws-action">
+          <view class="ws-default" data-id="{{item.id}}" bindtap="bindAgreeChange">
+            <checkbox-group  >
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{(item.checked =='true')?true:false}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{(item.checked =='true')?true:false}}"></icon>
+                    </view>
+                    设为默认
+                </view>
+            </label>
+        </checkbox-group>
+          </view>
+          
+          <view class="ws-delete" data-id="{{item.id}}" bindtap="deleteAddress"><image  src="../../image/delete.png"></image>删除</view>
+          <navigator url="./editto/index?id={{item.id}}&choose={{choose}}" class="ws-edit"><image  src="../../image/edit.png"></image>修改</navigator>
+        </view>
+    </view>
+</scroll-view>
+    <view class="cart-tab-wrp" bindtap="addrss">
+        <view class="cart-tab-item-btn">添加新地址</view>
+    </view>
+    
+</view>
